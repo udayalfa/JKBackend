@@ -15,6 +15,14 @@ app.use(
   })
 );
 connectDB();
+
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is alive"
+  });
+});
+
 app.use("/api/v1", mainRouter);
 const PORT = process.env.PORT || 5000;
 app.use(errorHandler);
